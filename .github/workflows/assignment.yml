@@ -1,0 +1,15 @@
+name: Handle Issue Events
+
+on:
+  issues:
+    types: [opened, edited, closed, reopened]
+
+jobs:
+  handle-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo issue info
+        run: |
+          echo "Issue #${{ github.event.issue.number }} was ${{ github.event.action }}"
+          echo "Title: ${{ github.event.issue.title }}"
+          echo "Body: ${{ github.event.issue.body }}"
